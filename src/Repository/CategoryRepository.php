@@ -52,4 +52,14 @@ class CategoryRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+
+    public function findByTitle($value): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.title = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
