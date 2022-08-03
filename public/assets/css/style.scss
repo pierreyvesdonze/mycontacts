@@ -1,0 +1,55 @@
+@import "./responsive";
+
+:root {
+	//var(--body-bg): url("../images/texture.webp") no-repeat fixed;
+	//var(--body-bg)-small: url("../images/texture-small.webp") no-repeat fixed;
+	--body-bg: linear-gradient(90deg,
+			rgba(21, 30, 34, 1) 21%,
+			rgba(20, 27, 28, 1) 37%,
+			rgba(20, 21, 23, 1) 52%,
+			rgba(23, 19, 16, 1) 81%,
+			rgba(1, 1, 1, 1) 98%);
+	--body-bg-small: linear-gradient(90deg,
+			rgba(21, 30, 34, 1) 21%,
+			rgba(20, 27, 28, 1) 37%,
+			rgba(20, 21, 23, 1) 52%,
+			rgba(23, 19, 16, 1) 81%,
+			rgba(1, 1, 1, 1) 98%);
+	--transparent: rgba(255, 255, 255, 0);
+	--semi-transparent: #29292940;
+	--alert: #0a0a0ad0;
+	--btn-color: #312e29a4;
+	--hover-color: #e78d06;
+	--card-bg: background: linear-gradient(90deg,
+			rgba(143, 166, 173, 0.927608543417367) 8%,
+			rgba(83, 99, 124, 1) 31%,
+			rgba(63, 62, 93, 1) 49%,
+			rgba(57, 42, 61, 1) 72%,
+			rgba(23, 17, 24, 1) 95%);
+	--card-header: #00000069;
+}
+
+p,
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+input,
+.required,
+.input-textarea,
+.span-italic,
+.nav-link,
+.infos,
+table,
+select,
+ul li,
+.container {
+	font-family: "Montserrat", sans-serif;
+	color: wheat !important;
+	text-shadow: 3px 1px 6px rgb(7, 7, 7);
+}
+

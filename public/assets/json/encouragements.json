@@ -1,0 +1,26 @@
+{
+    "duration": {
+        "1-day": "Un jour sobre est un jour noble !",
+        "2-days": "2 jours sans boire ? Bravo !",
+        "3-days": "3 jours de sobriété c'est un bon début, continuez comme ça !",
+        "4-days": "Déjà 4 jours d'abstinence, j'imagine que vous vous sentez déjà mieux... je me trompe ?",
+        "5-days": "5 jours d'abstinence... visez la semaine et vous serez très fière(e) de vous :",
+        "6-days": "Plus qu'1 jour et vous aurez tenu une semaine... Tenez bon ! ",
+        "1-week": "Eh voilà ! 1 semaine sans boire ! Vous remportez votre premier badge ! ",
+        "2-weeks": "Wow ! 2 semaines de sobriété, je vous tire mon chapeau ! Visez 3 semaines pour la prochaine étape. Quoi'qu'il en soit, vous remportez votre second badge !",
+        "3-weeks": "Bien joué, vous avez atteint 3 semaines sans une goutte, c'est votre foie qui commence à vous remercier ! Un3ème badge pour vous ! Votre prochaine étape sera 1 mois, vous pouvez y arriver ! Ce sera un sacré cap de passé !",
+        "1-month": "Félicitations, vous avez tenu 1 mois sans boire, c'est énorme ! Vous avez fait le plus dur à ce stade. Vous remportez la médaille de bronze !",
+        "2-months": "2 mois sans boire, c'est 2x plus qu'1 mois, c'est une double victoire ! Bravo vous êtes sur le bon chemin ! Un nouveau badge pour vous !",
+        "3-months": "Et 1 mois de plus de sobriété ! Cela se fête (sans alcool bien-sûr) avec un nouveau badge !",
+        "4-months": "On ne vous arrête plus dans le chemin de la sobriété, monpoison est fier de vous ! Allez tout de suite voir votre nouveau badge",
+        "5-months": "B.R.A.V.O. Encore 1 mois et vous en serez à 1/2 année de sobriété ! Nouveau badge de remporté !",
+        "6-months": "Eh bien ça y'est, 1 demi année sans boire d'alcool, vous pouvez vraiment être fier/fière de vous. Ne lâchez rien ! Pour vous récompenser de ces 6 mois sans boire, vous remportez la médaille d'argent !",
+        "7-months": "Si vous en êtes là, c'est que votre détermination a prouvé que vous étiez capable d'être abstinent ! Continuez sur cette voie. +1 badge pour vous !",
+        "8-months": "8 mois ? Déjà ? Vous rendez-vous compte du chemin accompli ? monpoison vous félicite et vous offre un nouveau badge !",
+        "9-months": "9 mois, il est temps d'accoucher de votre fierté d'avoir tenu aussi longtemps ! Comment allez-vous l'appeler ?",
+        "10-months": "On approche tout doucement des 1 an... vous le sentez ? Tenez bon svp !",
+        "11-months": "Encore un mois de sobriété et vous décrocherez la médaille d'or !",
+        "1-year" : "1 an ! 1 AN ! monpoison vous félicite de tout son coeur et vous offre la médaille d'or de la sobriété ! A vous désormais de continuer à vous encourager et d'encourager d'autres personnes alcoolo-dépendantes qui aimeraient arriver à votre niveau d'abstinence ! Un immense bravo !",
+        "+1": "Voyez ce que vous avez déjà accompli et ne perdez pas espoir !"
+    }
+}
