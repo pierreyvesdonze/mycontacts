@@ -4,11 +4,20 @@
 
 {% block body %}
 
-{{form_start(form)}}
-{{form_row(form.title)}}
-<br />
-{{form_row(form.submit)}}
-{{form_end(form)}}
+
+<div class="contact-form-flex">
+    {# Filter Form #}
+    <div>
+        {{form_start(form)}}
+        {{form_row(form.title)}}
+        <br />
+        {{form_row(form.submit)}}
+        {{form_end(form)}}
+    </div>
+    <div>
+        {% include('contacts/_search.html.twig') %}
+    </div>
+</div>
 
 <table>
     <thead>
@@ -20,7 +29,7 @@
     </thead>
     <tbody>
         {% for contact in contacts %}
-        <tr>
+        <tr class="custom-row">
             <td>{{ contact.Lastname }}</td>
             <td>{{ contact.firstName }}</td>
             <td><a href="{{ path('contact', {'id':contact.id}) }}" class="waves-effect waves-light btn">Voir</a> </td>

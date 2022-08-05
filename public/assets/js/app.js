@@ -8,7 +8,23 @@ var app = {
         * *****************************
         */
         $('.sidenav').sidenav();
+        $('.search-input').on('keyup', app.searchContact);
 
+    }, 
+
+    searchContact: function (evt) {
+        evt.preventDefault();
+        let userInput = $('.search-input').val();
+
+        $('.custom-row').hide();
+        $('.custom-row:contains("' + userInput + '")').show();
+
+        $(window).keydown((event) => {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        })
     }
 }
 

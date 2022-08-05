@@ -19,6 +19,7 @@ GENERAL
 */
 body {
   background-color: var(--body-bg);
+  overflow-y: scroll;
 }
 
 p,
@@ -92,4 +93,18 @@ CARD
 }
 .collection .collection-item span {
   margin-left: 1.3em;
+}
+
+/*
+ ***************************
+ CONTACT
+ ***************************
+ */
+.contact-form-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.contact-form-flex div {
+  width: 50%;
 }/*# sourceMappingURL=style.css.map */

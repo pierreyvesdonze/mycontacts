@@ -20,6 +20,7 @@
 
 body {
 	background-color: var(--body-bg);
+	overflow-y: scroll;
 }
 
 p,
@@ -66,6 +67,7 @@ select, select option {
 	background-color: var(--primary-color);
 }
 
+
 /*
  ***************************
  NAVBAR
@@ -93,3 +95,18 @@ select, select option {
 		margin-left: 1.3em;
 	}
  }
+
+
+/*
+ ***************************
+ CONTACT
+ ***************************
+ */
+.contact-form-flex {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	div {
+		width: 50%;
+	}
+}
