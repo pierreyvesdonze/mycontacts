@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ContactsController extends AbstractController
 {
@@ -143,5 +145,62 @@ class ContactsController extends AbstractController
         $this->addFlash('success', 'Le contact a bien été supprimé');
 
         return $this->redirectToRoute('contacts');
+    }
+
+    #[Route('/contacts/export', name: 'contacts_export')]
+    public function contactsExport(
+        CategoryRepository $categoryRepository,
+        ContactRepository $contactRepository,
+        Request $request
+    )
+    {
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('login');
+        }
+
+        $filterForm = $this->createForm(CategoryType::class);
+        $filterForm->handleRequest($request);
+
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $categoryName = $filterForm->get('title')->getData();
+            $category = $categoryRepository->findOneBy([
+                'title' => $categoryName
+            ]);
+
+            $contacts = $contactRepository->findByUserAndCategory($user, $category);
+
+            if ('tous' === $categoryName) {
+                $contacts = $contactRepository->findByUser($user);
+            }
+
+            $contactsArr = [];
+            foreach ($contacts as $contact) {
+                $contactsArr[] = $contact->getEmail();
+            }
+
+            $filename = "contacts.csv";
+            $f = fopen($filename, 'w');
+            fputcsv($f, $contactsArr);
+            fclose($f);
+
+            $response = new Response();
+
+            $response->headers->set('Cache-Control', 'private');
+            $response->headers->set('Content-type', mime_content_type($filename));
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($filename) . '";');
+            $response->headers->set('Content-length', filesize($filename));
+
+            $response->sendHeaders();
+
+            $response->setContent(file_get_contents($filename));
+
+            return $response;
+        } 
+        
+        return $this->render('contacts/export.html.twig', [
+            'form' => $filterForm->createView()
+        ]);
     }
 }
