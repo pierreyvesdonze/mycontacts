@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactsController!{% endblock %}
+{% block title %}Contacts{% endblock %}
 
 {% block body %}
+
+{{form_start(form)}}
+{{form_row(form.title)}}
+<br />
+{{form_row(form.submit)}}
+{{form_end(form)}}
 
 <table>
     <thead>
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Email</th>
-            <th>Tel</th>
-            <th>Adresse</th>
-            <th>Categorie</th>
+            <th>Voir le contact</th>
         </tr>
     </thead>
     <tbody>
@@ -20,14 +23,11 @@
         <tr>
             <td>{{ contact.Lastname }}</td>
             <td>{{ contact.firstName }}</td>
-            <td>{{ contact.email }}</td>
-            <td>{{ contact.phoneNumber }}</td>
-            <td>{{ contact.address }}</td>
-            <td>{{ contact.category.title }}</td>
+            <td><a href="{{ path('contact', {'id':contact.id}) }}" class="waves-effect waves-light btn">Voir</a> </td>
         </tr>
         {% endfor %}
     </tbody>
-    
+
 </table>
 
 

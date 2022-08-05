@@ -48,4 +48,16 @@ class ContactRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByUserAndCategory($user, $category): array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.user = :user')
+            ->andWhere('c.category = :category')
+            ->setParameter('user', $user)
+            ->setParameter('category', $category)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

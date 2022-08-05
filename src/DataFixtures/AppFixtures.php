@@ -20,7 +20,6 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
 
     {
-
         $user = new User;
         $user->setEmail('test@test.test');
         $user->setRoles(['ROLE_USER']);
@@ -41,7 +40,7 @@ class AppFixtures extends Fixture
         $manager->persist($family);
 
         $collegue = new Category;
-        $collegue->setTitle('collègue');
+        $collegue->setTitle('travail');
         $manager->persist($collegue);
 
         $somebody = new Category;
@@ -55,6 +54,10 @@ class AppFixtures extends Fixture
         $customer = new Category;
         $customer->setTitle('client');
         $manager->persist($customer);
+
+        $health = new Category;
+        $health->setTitle('santé');
+        $manager->persist($health);
 
         //Create Contacts
         $faker = Faker\Factory::create('fr_FR');

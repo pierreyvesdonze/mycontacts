@@ -8,12 +8,16 @@
     {% block metadescription %}{% endblock %}
     <meta name="google-site-verification" content="Wug1WNXTFOb4DLNL5JstVtp3r1nRBv47FCgGvH8tVFQ" />
 
-    <title>{% block title %}Arrêter l'alcool et sortir de la dépendance{% endblock %}</title>
+    <title>{% block title %}Mes contacts{% endblock %}</title>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/apple-touch-icon.png') }}">
-
+    <link href="{{ asset('assets/css/materialize.min.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+    <link href="{{ asset('assets/css/materialize-style.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,13 +43,23 @@
         {% endfor %}
     </div>
 
-    {% block body %}
-    {% endblock %}
+    {# NAV #}
+    {% include('nav/nav.html.twig') %}
 
-    {# JS #}
-    {% block javascripts %}    
+    <section class="main">
 
-    {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        {# JS #}
+        {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script src="{{ asset('assets/js/app.js') }}" defer></script>
+        {% endblock %}
+    </section>
 </body>
 
 </html>
