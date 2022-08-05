@@ -44,7 +44,7 @@ class ContactRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->andWhere('c.user = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.lastName', 'ASC')
             ->getQuery()
             ->getResult();
     }
@@ -56,7 +56,7 @@ class ContactRepository extends ServiceEntityRepository
             ->andWhere('c.category = :category')
             ->setParameter('user', $user)
             ->setParameter('category', $category)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.lastName', 'ASC')
             ->getQuery()
             ->getResult();
     }

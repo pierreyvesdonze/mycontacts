@@ -28,9 +28,9 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         $manager->flush();
 
+        //Create categories
         $categories = $this->categoryRepository->findAll();
 
-        //Create categories
         $friend = new Category;
         $friend->setTitle('ami');
         $manager->persist($friend);

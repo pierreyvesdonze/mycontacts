@@ -3,24 +3,25 @@
 :root {
 	//var(--body-bg): url("../images/texture.webp") no-repeat fixed;
 	//var(--body-bg)-small: url("../images/texture-small.webp") no-repeat fixed;
-	--body-bg: #454d66;
-	--navbar-color: #309975;
+	--body-bg: radial-gradient(circle, rgba(48,153,117,1) 0%, rgba(0,0,0,1) 100%);
+	--navbar-color: #30997561;
 	--container-color: #58b368;
 	--text-color: white;
 	--primary-color: #b1af3c;
 	--secondary-color: #efeeb4;
-	
+	--navlink-color: #ffd800;
 }
 
- /*
+/*
  ***************************
  GENERAL
  ***************************
  */
 
 body {
-	background-color: var(--body-bg);
-	overflow-y: scroll;
+	background: var(--body-bg);
+	overflow-y: hidden;
+	height: 100vh;
 }
 
 p,
@@ -40,11 +41,16 @@ input,
 .infos,
 table,
 select,
-ul li,
-.container {
+select option,
+ul li
+ {
 	font-family: "Montserrat", sans-serif;
 	color: var(--text-color) !important;
-	text-shadow: 3px 1px 6px rgb(7, 7, 7);
+	text-shadow: 1px 1px 1px rgb(7, 7, 7);
+}
+
+select option {
+	font-weight: bold !important;
 }
 
 .main {
@@ -58,50 +64,75 @@ table {
 	}
 }
 
-select, select option {
+select,
+select option {
 	background-color: var(--container-color);
 	display: block;
 }
 
 .btn {
 	background-color: var(--primary-color);
+	font-weight: bold;
+	border-radius: 20px 5px 20px 5px;
 }
-
 
 /*
  ***************************
  NAVBAR
  ***************************
  */
- .navbar {
-	background-color: var(--navbar-color);
+ nav {
+	background: transparent !important;
  }
+.navbar {
+	background-color: var(--navbar-color);
+}
 
- /*
+.sidenav  {
+	background-color: var(--navbar-color) !important;
+}
+
+#mobile-demo {
+	background-color: var(--navbar-color) !important;
+}
+
+.navlink,
+.brand-logo {
+	color: var(--navlink-color) !important;
+	font-weight: bold !important;
+}
+
+/*
  ***************************
  CARD
  ***************************
  */
- .card {
+.card {
 	background-color: var(--container-color);
- }
- .card-content {
+}
+.card-content {
 	background-color: var(--navbar-color);
- }
+}
 
- .collection .collection-item {
+.collection .collection-item {
 	background-color: var(--container-color);
 	span {
 		margin-left: 1.3em;
 	}
- }
-
+}
 
 /*
  ***************************
- CONTACT
+ CONTACTS
  ***************************
  */
+ .scroll-div {
+	height: 70vh;
+	overflow-y: scroll;
+	padding-bottom: 55px;
+ }
+
+
 .contact-form-flex {
 	display: flex;
 	justify-content: space-between;

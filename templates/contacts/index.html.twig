@@ -19,25 +19,35 @@
     </div>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Voir le contact</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for contact in contacts %}
-        <tr class="custom-row">
-            <td>{{ contact.Lastname }}</td>
-            <td>{{ contact.firstName }}</td>
-            <td><a href="{{ path('contact', {'id':contact.id}) }}" class="waves-effect waves-light btn">Voir</a> </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-
-</table>
+{% if contacts %}
+<div class="scroll-div">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Voir le contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr class="custom-row">
+                <td>{{ contact.Lastname }}</td>
+                <td>{{ contact.firstName }}</td>
+                <td><a href="{{ path('contact', {'id':contact.id}) }}" class="waves-effect waves-light btn">Voir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div>
+    <br/>
+    <p>Vous n'avez pas de contact dans cette catégorie.</p>
+    <a href="{{ path('contact_create') }}" class="waves-effect waves-light btn">Voulez-vous créer un contact ?</a>
+</div>
+{% endif %}
 
 
 {% endblock %}

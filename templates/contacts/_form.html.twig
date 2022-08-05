@@ -10,7 +10,14 @@
 {{form_row(form.address)}}
 {{form_row(form.category)}}
 <br />
-{{form_row(form.submit)}}
+<div class="contact-form-flex ">
+    <div>
+        {{form_row(form.submit)}}
+    </div>
+    <div>
+        <a href="{{ path('contacts') }}" class="waves-effect waves-light btn">Annuler</a>
+    </div>
+</div>
 {{form_end(form)}}
 
 {% endblock %}
