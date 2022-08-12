@@ -3,7 +3,11 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <a href="{{ path('register') }}">Créer un compte</a>
-    <a href="{{ path('login') }}">Connexion</a>
-    <a href="{{ path('contacts') }}">Mes contacts</a>
+{% if app.user %}
+    <h1>Vous êtes connecté en tant que {{ app.user.email }}</h1>
+    {% else %}
+    <h1>Vous n'êtes pas connecté</h1>
+
+{% endif %}
+
 {% endblock %}

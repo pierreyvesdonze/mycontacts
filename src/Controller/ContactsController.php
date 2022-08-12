@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ContactsController extends AbstractController
 {
@@ -75,6 +73,9 @@ class ContactsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contact->setUser($user);
+            $contact->setLastName(ucfirst($form->get('lastName')->getData()));
+            $contact->setFirstName(ucfirst($form->get('firstName')->getData()));
+            
             $this->em->persist($contact);
             $this->em->flush();
 
@@ -118,6 +119,8 @@ class ContactsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setLastName(ucfirst($form->get('lastName')->getData()));
+            $contact->setFirstName(ucfirst($form->get('firstName')->getData()));
             $this->em->flush();
 
             $this->addFlash('success', 'Le contact a bien été modifié');

@@ -7,9 +7,9 @@ MEDIA QUERIES
 :root {
   --body-bg: radial-gradient(circle, rgba(48,153,117,1) 0%, rgba(0,0,0,1) 100%);
   --navbar-color: #30997561;
-  --container-color: #58b368;
+  --container-color: #58b36927;
   --text-color: white;
-  --primary-color: #b1af3c;
+  --primary-color: #b1af3cd3;
   --secondary-color: #efeeb4;
   --navlink-color: #ffd800;
 }
@@ -43,7 +43,8 @@ input,
 table,
 select,
 select option,
-ul li {
+ul li,
+.alert {
   font-family: "Montserrat", sans-serif;
   color: var(--text-color) !important;
   text-shadow: 1px 1px 1px rgb(7, 7, 7);
@@ -51,17 +52,20 @@ ul li {
 
 select option {
   font-weight: bold !important;
+  background-color: var(--primary-color) !important;
 }
 
 .main {
-  padding: 6%;
+  padding: 2% 6%;
 }
 
 table {
   width: 100% !important;
 }
-table thead th {
-  text-align: left;
+table thead th,
+table tbody tr td {
+  text-align: center;
+  font-size: 1.2em;
 }
 
 select,
@@ -121,6 +125,12 @@ nav {
 }
 .collection .collection-item span {
   margin-left: 1.3em;
+  font-size: 1.3em;
+}
+
+.card-action {
+  display: flex;
+  justify-content: space-around;
 }
 
 /*

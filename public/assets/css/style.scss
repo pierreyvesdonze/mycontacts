@@ -5,9 +5,9 @@
 	//var(--body-bg)-small: url("../images/texture-small.webp") no-repeat fixed;
 	--body-bg: radial-gradient(circle, rgba(48,153,117,1) 0%, rgba(0,0,0,1) 100%);
 	--navbar-color: #30997561;
-	--container-color: #58b368;
+	--container-color: #58b36927;
 	--text-color: white;
-	--primary-color: #b1af3c;
+	--primary-color: #b1af3cd3;
 	--secondary-color: #efeeb4;
 	--navlink-color: #ffd800;
 }
@@ -42,7 +42,8 @@ input,
 table,
 select,
 select option,
-ul li
+ul li,
+.alert
  {
 	font-family: "Montserrat", sans-serif;
 	color: var(--text-color) !important;
@@ -51,16 +52,19 @@ ul li
 
 select option {
 	font-weight: bold !important;
+	background-color: var(--primary-color) !important;
 }
 
 .main {
-	padding: 6%;
+	padding: 2% 6%;
 }
 
 table {
 	width: 100% !important;
-	thead th {
-		text-align: left;
+	thead th,
+	tbody tr td {
+		text-align: center;
+		font-size: 1.2em;
 	}
 }
 
@@ -118,7 +122,13 @@ select option {
 	background-color: var(--container-color);
 	span {
 		margin-left: 1.3em;
+		font-size: 1.3em;
 	}
+}
+
+.card-action {
+	display: flex;
+    justify-content: space-around;
 }
 
 /*

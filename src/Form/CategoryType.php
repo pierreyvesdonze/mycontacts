@@ -24,7 +24,8 @@ class CategoryType extends AbstractType
                     'connaissance' => 'connaissance',
                     'fournisseur' => 'fournisseur', 
                     'client' => 'client',
-                    'santé' => 'santé'
+                    'santé' => 'santé',
+                    'autre' => 'autre'
                 ]
             ])
             ->add('submit', SubmitType::class, [
