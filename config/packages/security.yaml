@@ -23,8 +23,8 @@ security:
 
             logout:
                 path: logout
-            custom_authenticator: App\Security\Authenticator
-            entry_point: form_login
+            # custom_authenticator: App\Security\Authenticator
+            # entry_point: form_login
                 # where to redirect after logout
                 # target: app_any_route
 
