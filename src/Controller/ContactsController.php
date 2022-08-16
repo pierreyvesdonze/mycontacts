@@ -251,4 +251,59 @@ class ContactsController extends AbstractController
             'form' => $filterForm->createView()
         ]);
     }
+
+    #[Route('/contacts/export/demo', name: 'contacts_export_demo')]
+    public function contactsExportDemo(
+        CategoryRepository $categoryRepository,
+        ContactRepository $contactRepository,
+        UserRepository $userRepository,
+        Request $request
+    ) {
+        $user = $userRepository->findOneBy([
+            'id' => 4
+        ]);
+
+        $filterForm = $this->createForm(CategoryType::class);
+        $filterForm->handleRequest($request);
+
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $categoryName = $filterForm->get('title')->getData();
+            $category = $categoryRepository->findOneBy([
+                'title' => $categoryName
+            ]);
+
+            $contacts = $contactRepository->findByUserAndCategory($user, $category);
+
+            if ('tous' === $categoryName) {
+                $contacts = $contactRepository->findByUser($user);
+            }
+
+            $contactsArr = [];
+            foreach ($contacts as $contact) {
+                $contactsArr[] = $contact->getEmail();
+            }
+
+            $filename = "contacts.csv";
+            $f = fopen($filename, 'w');
+            fputcsv($f, $contactsArr);
+            fclose($f);
+
+            $response = new Response();
+
+            $response->headers->set('Cache-Control', 'private');
+            $response->headers->set('Content-type', mime_content_type($filename));
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($filename) . '";');
+            $response->headers->set('Content-length', filesize($filename));
+
+            $response->sendHeaders();
+
+            $response->setContent(file_get_contents($filename));
+
+            return $response;
+        }
+
+        return $this->render('contacts/export.html.twig', [
+            'form' => $filterForm->createView()
+        ]);
+    }
 }
