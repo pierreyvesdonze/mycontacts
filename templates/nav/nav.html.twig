@@ -4,23 +4,30 @@
             <a href="{{ path('main') }}" class="brand-logo">@</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+                {% if app.user %}
                 <li><a href="{{ path('contacts') }}" class="navlink">Contacts</a></li>
                 <li><a href="{{ path('contact_create') }}" class="navlink">Créer un contact</a></li>
                 <li><a href="{{ path('contacts_export') }}" class="navlink">Exporter</a></li>
-                {% if app.user %}
                 <li><a href="{{ path('logout') }}" class="navlink">Déconnexion</a></li>
                 {% else %}
-                    <li><a href="{{ path('login') }}" class="navlink">Connexion</a></li>
-                    <li><a href="{{ path('register') }}" class="navlink">Créer un compte</a></li>
+                <li><a href="{{ path('contacts_demo') }}" class="navlink">Contacts</a></li>
+                <li><a href="{{ path('login') }}" class="navlink">Connexion</a></li>
+                <li><a href="{{ path('register') }}" class="navlink">Créer un compte</a></li>
                 {% endif %}
-                
             </ul>
         </div>
     </nav>
 </div>
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="{{ path('contacts') }}" class="navlink">Contacts</a></li>
-    <li><a href="{{ path('contact_create') }}" class="navlink">Créer un contact</a></li>
-    <li><a href="{{ path('contacts_export') }}" class="navlink">Exporter</a></li>
+            {% if app.user %}
+            <li><a href="{{ path('contacts') }}" class="navlink">Contacts</a></li>
+            <li><a href="{{ path('contact_create') }}" class="navlink">Créer un contact</a></li>
+            <li><a href="{{ path('contacts_export') }}" class="navlink">Exporter</a></li>
+            <li><a href="{{ path('logout') }}" class="navlink">Déconnexion</a></li>
+            {% else %}
+            <li><a href="{{ path('contacts_demo') }}" class="navlink">Contacts</a></li>
+            <li><a href="{{ path('login') }}" class="navlink">Connexion</a></li>
+            <li><a href="{{ path('register') }}" class="navlink">Créer un compte</a></li>
+            {% endif %}
 </ul>

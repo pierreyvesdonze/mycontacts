@@ -7,6 +7,7 @@ use App\Form\CategoryType;
 use App\Form\ContactType;
 use App\Repository\CategoryRepository;
 use App\Repository\ContactRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,6 +52,41 @@ class ContactsController extends AbstractController
         }
 
         return $this->render('contacts/index.html.twig', [
+            'contacts' => $contacts,
+            'form' => $filterForm->createView()
+        ]);
+    }
+
+    #[Route('/contacts/demo', name: 'contacts_demo')]
+    public function indexDemo(
+        ContactRepository $contactRepository,
+        CategoryRepository $categoryRepository,
+        Request $request,
+        UserRepository $userRepository
+    ): Response {
+        $user = $userRepository->findOneBy([
+            'id' => 4
+        ]);
+
+        $filterForm = $this->createForm(CategoryType::class);
+        $filterForm->handleRequest($request);
+
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $categoryName = $filterForm->get('title')->getData();
+            $category = $categoryRepository->findOneBy([
+                'title' => $categoryName
+            ]);
+
+            $contacts = $contactRepository->findByUserAndCategory($user, $category);
+
+            if ('tous' === $categoryName) {
+                $contacts = $contactRepository->findByUser($user);
+            }
+        } else {
+            $contacts = $contactRepository->findByUser($user);
+        }
+
+        return $this->render('contacts/demo.index.html.twig', [
             'contacts' => $contacts,
             'form' => $filterForm->createView()
         ]);
@@ -101,6 +137,14 @@ class ContactsController extends AbstractController
         }
 
         return $this->render('contacts/contact.html.twig', [
+            'contact' => $contact
+        ]);
+    }
+
+    #[Route('/contact/demo/{id}', name: 'contact_demo')]
+    public function contactDemo(Contact $contact)
+    {
+        return $this->render('contacts/demo.contact.html.twig', [
             'contact' => $contact
         ]);
     }

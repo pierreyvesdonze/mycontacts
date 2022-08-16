@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block body %}
+
+
+<div class="contact-form-flex">
+    {# Filter Form #}
+    <div>
+        {{form_start(form)}}
+        {{form_row(form.title)}}
+        <br />
+        {{form_row(form.submit)}}
+        {{form_end(form)}}
+    </div>
+    <div>
+        {% include('contacts/_search.html.twig') %}
+    </div>
+</div>
+
+<br />
+
+<div class="advertising">
+    <p>Attention cette page est une démo !</p>
+    <p>
+        Tous les contacts listés ci-dessous sont parfaitement fictifs, inutile d'essayer de les contacter.
+    </p>
+</div>
+
+<br />
+<div class="scroll-div">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Voir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr class="custom-row">
+                <td>{{ contact.Lastname }}</td>
+                <td>{{ contact.firstName }}</td>
+                <td><a href="{{ path('contact_demo', {'id':contact.id}) }}" class="waves-effect waves-light btn">Voir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
